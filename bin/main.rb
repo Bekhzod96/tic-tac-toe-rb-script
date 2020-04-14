@@ -20,4 +20,3 @@ end
 chooce == 'X' ? x = true : nil
 
 puts x ? "#{player2} - O vs #{player1} - X" : "#{player2} - X vs #{player1} - O"
-
