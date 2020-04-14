@@ -1,4 +1,5 @@
 # !/usr/bin/env ruby
+
 puts '                                      Hello Welcome to Tic Tac Toe            '
 puts 'This game for two person. For playing game insert gamers nic! '
 
@@ -19,3 +20,4 @@ end
 chooce == 'X' ? x = true : nil
 
 puts x ? "#{player2} - O vs #{player1} - X" : "#{player2} - X vs #{player1} - O"
+
