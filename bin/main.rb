@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+# !/usr/bin/env ruby
 puts '                                      Hello Welcome to Tic Tac Toe            '
 puts 'This game for two person. For playing game insert gamers nic! '
 
