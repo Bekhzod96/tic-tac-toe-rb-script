@@ -69,3 +69,8 @@ end
 
 puts '                       Finish!'
 puts 'Great job you Win!'
+
+
+
+
+# game=Game.new(p1,p2)
