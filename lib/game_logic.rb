@@ -24,55 +24,65 @@ class Board
     #{@board[4]} | #{@board[5]} | #{@board[6]} \n
     #{@board[7]} | #{@board[8]} | #{@board[9]} "
   end
-
-  def update_board(position, sign)
-    @board[position] = sign
-  end
 end
 
 class Game
-  p1 = Player.new("p1", "X")
-  p2 = Player.new("p2", "O")
-  player1_turn = true
-
   board = Board.new
   board.display
 
-  # work tomorrow move method
-  def move(player)
-    print "Player \"#{player.name}\" is your turn, choose position from board: "
-    choise = gets.chomp.to_i
-    while board[choise].nil? || (board[choise] == "X" || board[choise] == "O")
-      print "Enter available position:"
-      choise = gets.chomp.to_i
+  def looping_game?(player1, player2, sign)
+    player1_turn = true
+    while check_win(board).empty? && draw(board)
+      if player1_turn
+        board = move(player1, board, sign)
+        player1_turn = false
+      else
+        board = move(player2, board, sign)
+        player1_turn = true
+      end
     end
-
-    board[choise] = sign[player_name]
-    puts display_board(board)
-    puts rand(0..9) % 2.zero? ? "Great this was winnig move!" : "Ovv it has been drawing move!"
-    board
+    check_win(board)
   end
 
-  while !winner || !draw
-    if player1_turn
-      board = move(player1, board, sign)
-      player1_turn = false
+  def check_win(board)
+    result = []
+    winnig = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+    winnig.each do |arr|
+      sign = ""
+      arr.each_with_index do |value, index|
+        if (board[value] == "X" || board[value] == "O") && index.zero?
+          sign = board[value]
+        elsif sign == board[value]
+          return result = [true, sign] if index == 2
+
+          next
+        else
+          break
+        end
+      end
+    end
+    result
+  end
+
+  def draw(board)
+    draw = true
+    board.each_with_index do |value, index|
+      break draw = false if index == 8
+      value[1] == "X" || value[1] == "O" ? next : break
+    end
+    draw
+  end
+
+  def add_player_sign(player_sign, player1, player2)
+    x = false
+    player_sign == "X" ? x = true : nil
+    sign = {}
+    if x
+      sign[player1] = "X"
+      sign[player2] = "O"
     else
-      board = move(player2, board, sign)
-      player1_turn = true
+      sign[player1] = "O"
+      sign[player2] = "X"
     end
   end
-
-  private
-
-  def winner; end
-
-  def draw; end
-
-  #   def free_position?
-
-  #  end
-
-  #   def available_position?
-  #  end
 end
