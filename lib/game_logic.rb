@@ -27,17 +27,25 @@ class Board
 end
 
 class Game
-  board = Board.new
-  board.display
+  def initialize(player1_name, player1_sign, player2_name, player2_sign)
+    @player1_name = player1_name
+    @player1_sign = player1_sign
+    @player2_name = player2_name
+    @player2_sign = player2_sign
+  end
 
-  def looping_game?(player1, player2, sign)
+  @board = Board.new
+  @p1 = Player.new(@player1_name, @player1_sign)
+  @p2 = Player.new(@player2_name, @player2_sign)
+
+  def looping_game?
     player1_turn = true
-    while check_win(board).empty? && draw(board)
+    while check_win(@board.board).empty? && draw(@board.board)
       if player1_turn
-        board = move(player1, board, sign)
+        board = move(@p1.name, board, @p1.sign)
         player1_turn = false
       else
-        board = move(player2, board, sign)
+        board = move(@p2.name, board, @p2.sign)
         player1_turn = true
       end
     end
