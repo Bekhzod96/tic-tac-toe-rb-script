@@ -34,10 +34,10 @@ board = {
 }
 
 def display_board(board)
-  " Result of the move
-#{board[1]} | #{board[2]} | #{board[3]} \n
-#{board[4]} | #{board[5]} | #{board[6]} \n
-#{board[7]} | #{board[8]} | #{board[9]} "
+  "\nResult of the move\n
+  #{board[1]} | #{board[2]} | #{board[3]} \n
+  #{board[4]} | #{board[5]} | #{board[6]} \n
+  #{board[7]} | #{board[8]} | #{board[9]} \n \n \n"
 end
 
 puts display_board(board)
@@ -51,13 +51,41 @@ def move(player_name, board, sign)
 
   board[choise] = sign[player_name]
   puts display_board(board)
-  puts rand(0..9) % 2.zero? ? 'Great this was winnig move!' : 'Ovv it has been drawing move!'
   board
 end
 
 player1_turn = true
 
-9.times do
+def check_win(board)
+  result = []
+  winnig = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+  winnig.each do |arr|
+    sign = ''
+    arr.each_with_index do |value, index|
+      if (board[value] == 'X' || board[value] == 'O') && index.zero?
+        sign = board[value]
+      elsif sign == board[value]
+        return result = [true, sign] if index == 2
+
+        next
+      else
+        break
+      end
+    end
+  end
+  result
+end
+
+def draw(board)
+  draw = true
+  board.each_with_index do |value, index|
+    break draw = false if index == 8
+    value[1] == 'X' || value[1] == 'O' ? next : break
+  end
+  draw
+end
+
+while check_win(board).empty? && draw(board)
   if player1_turn
     board = move(player1, board, sign)
     player1_turn = false
@@ -67,5 +95,15 @@ player1_turn = true
   end
 end
 
-puts '                       Finish!'
-puts 'Great job you Win!'
+winner = check_win(board)
+
+if !draw(board)
+  puts 'Ovv it has been drawing game!'
+else
+  puts 'Finish!'
+  if winner[1] == sign[player1]
+    puts "Great #{player1} you win!"
+  else
+    puts "Great #{player2} you win!"
+  end
+end
