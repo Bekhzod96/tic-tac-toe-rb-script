@@ -12,7 +12,7 @@ end
 
 class Game
   attr_accessor :board, :p1, :p2, :sign
-  def initialize(player1_name, player2_name,sign)
+  def initialize(player1_name, player2_name, sign)
     @board = { 1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5', 6 => '6', 7 => '7', 8 => '8', 9 => '9' }
     @p1 = Player.new(player1_name)
     @p2 = Player.new(player2_name)
