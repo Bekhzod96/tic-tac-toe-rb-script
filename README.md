@@ -16,6 +16,34 @@ In order to start with the project:
 3. Run the algorithm file
     - In a terminal window write `ruby `*`[your_file_path]`*`bin/main.rb`
 
+## Instructions
+
+RULES FOR TIC-TAC-TOE
+
+1. The game is played on a grid that's 3 squares by 3 squares.
+
+2. You are X, your friend (or the computer in this case) is O. Players take turns putting their marks in empty squares.
+
+3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.
+
+4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
+
+## How to start the game
+
+> After running the `main.rb` the file you will be able to see this console information.
+
+1.  Write each one a nickname
+2.  The first player will select the sign `X` or `O`
+3.  The first player gives a move, then the second player does same until there's a winner or a draw
+
+
+![image](https://user-images.githubusercontent.com/24902525/79488236-0e259500-7fdf-11ea-86d3-6e2be74102ac.png)
+
+- Until there's a winner or a draw
+
+![image](https://user-images.githubusercontent.com/24902525/79488667-b6d3f480-7fdf-11ea-9d52-09b6233b1f62.png)
+
+
 ## Authors
 
 👤 **Bertil Tandayamo**
