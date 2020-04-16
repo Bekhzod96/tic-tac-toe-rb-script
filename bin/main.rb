@@ -1,5 +1,5 @@
 # !/usr/bin/env ruby
-require './lib/game_logic'
+require_relative '../lib/game_logic'
 move = proc do |player_name, board, sign|
   print "Player \"#{player_name}\" is your turn, choose position from board: "
   choice = gets.chomp.to_i
