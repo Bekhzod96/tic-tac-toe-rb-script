@@ -45,6 +45,7 @@ else
   puts 'Finish!'
   if winner[1] == game.p1.sign
     puts "Great #{game.p1.name},  you win!"
+
   else
     puts "Great #{game.p2.name},  you win!"
   end
