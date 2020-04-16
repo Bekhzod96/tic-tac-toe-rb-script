@@ -1,14 +1,4 @@
-# game_logic section
-
-class Player
-  attr_reader :name, :sign
-  attr_writer :sign
-
-  def initialize(name)
-    @name = name
-    @sign = ''
-  end
-end
+require_relative 'player.rb'
 
 class Game
   attr_accessor :board, :p1, :p2, :sign
