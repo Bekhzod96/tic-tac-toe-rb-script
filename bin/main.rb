@@ -1,54 +1,51 @@
 # !/usr/bin/env ruby
-
-def move(player_name, board, sign)
+require './lib/game_logic'
+move = proc do |player_name, board, sign|
   print "Player \"#{player_name}\" is your turn, choose position from board: "
-  choise = gets.chomp.to_i
-  while board[choise].nil? || (board[choise] == "X" || board[choise] == "O")
-    print "Enter available position:"
-    choise = gets.chomp.to_i
+  choice = gets.chomp.to_i
+  while board[choice].nil? || (board[choice] == 'X' || board[choice] == 'O')
+    print 'Enter available position:'
+    choice = gets.chomp.to_i
   end
 
-  board[choise] = sign[player_name]
-  puts display_board(board)
+  board[choice] = sign
   board
 end
+puts '                      Hello Welcome to Tic Tac Toe            '
+puts 'This game for two person. For playing game insert gamers nic! '
 
-puts "                                      Hello Welcome to Tic Tac Toe            "
-puts "This game for two person. For playing game insert gamers nic! "
-
-print "Player #1: "
+print 'Player #1: '
 player1 = gets.chomp
 
-print "Player #2: "
+print 'Player #2: '
 player2 = gets.chomp
 puts "Great #{player1} vs #{player2}, Let\'s get started!"
-puts "                                     Choose you sign in dashboard X || O "
+puts '                           Select you sign in dashboard X || O '
 
-print "Player #{player1} make a choice: "
+print "Player #{player1} it is your turn to select: "
 player_sign = gets.chomp
 
-while player_sign != "X" && player_sign != "O"
+while player_sign != 'X' && player_sign != 'O'
   print "#{player1} please choose out of given option:  "
   player_sign = gets.chomp
 end
+game = Game.new(player1, player2, player_sign)
+puts game.display
 
-# game=Game.new("p1","x", "p2","o")
-# call add_player_sign method
+while game.check_win?.empty? && game.draw?
+  game.update_board(move)
+  puts game.display
+end
 
-# call board class to
-puts display_board(board)
+winner = game.check_win?
 
-# call game.looping_game
-# winner = looping_game
-
-# cal game.draw mehod
-if !draw(board)
-  puts "Ovv it has been drawing game!"
+if !game.draw?
+  puts 'Ohh, no one wins! It\'s a draw!'
 else
-  puts "Finish!"
-  if winner[1] == sign[player1]
-    puts "Great #{player1} you win!"
+  puts 'Finish!'
+  if winner[1] == game.p1.sign
+    puts "Great #{game.p1.name},  you win!"
   else
-    puts "Great #{player2} you win!"
+    puts "Great #{game.p2.name},  you win!"
   end
 end
