@@ -4,7 +4,7 @@ AllCops:
     - "README.md"
     - "Guardfile"
     - "Rakefile"
-    - "spec_helper.rb"
+    - "spec/spec_helper.rb"
 
   DisplayCopNames: true
 
