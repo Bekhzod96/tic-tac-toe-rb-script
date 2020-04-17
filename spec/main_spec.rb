@@ -1,3 +1,5 @@
+# rubocop:disable Lint/UselessAssignment
+
 require './lib/game_logic.rb'
 describe Game do
   subject { Game.new('PL1', 'PL2', 'O') }
@@ -45,4 +47,5 @@ describe Game do
       expect(subject.board).to_not contain_exactly(original_board)
     end
   end
+  # rubocop:enable Lint/UselessAssignment
 end
