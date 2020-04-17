@@ -1,5 +1,3 @@
-# rubocop:disable Lint/UselessAssignment
-
 require './lib/game_logic.rb'
 describe Game do
   subject { Game.new('PL1', 'PL2', 'O') }
@@ -40,12 +38,11 @@ describe Game do
   end
 
   context 'update_board' do
-    move = proc { board = { 1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => 'X', 6 => '6', 7 => '7', 8 => '8', 9 => 'X' } }
+    move = proc { { 1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => 'X', 6 => '6', 7 => '7', 8 => '8', 9 => 'X' } }
     it 'it is updated board' do
       original_board = subject.board
       subject.update_board(move)
       expect(subject.board).to_not contain_exactly(original_board)
     end
   end
-  # rubocop:enable Lint/UselessAssignment
 end
