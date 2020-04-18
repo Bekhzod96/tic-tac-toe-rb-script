@@ -15,33 +15,36 @@ RSpec.describe Game do
     end
   end
 
-  context 'check_win?' do
-    it 'Winnnig condition' do
+  describe '#win?' do
+    it 'returns true when win the game' do
       subject.board = { 1 => 'X', 2 => '2', 3 => '3', 4 => '4', 5 => 'X', 6 => '6', 7 => '7', 8 => '8', 9 => 'X' }
       expect(subject.check_win?).to be
     end
-  end
-
-  context '!check_win?' do
-    it 'Not Winnnig condition' do
+    it 'return false when loose the game' do
       subject.board = { 1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => 'X', 6 => '6', 7 => '7', 8 => '8', 9 => 'X' }
       expect(subject.check_win?).to eq([])
     end
   end
 
-  context 'X sign' do
-    it 'Player1 is X sign' do
+  describe '#add_player' do
+    it 'returns true when player1 got X sign' do
       subject.add_player_sign('X')
       expect(subject.p1.sign).to eq('X')
     end
   end
 
-  context 'update_board' do
+  describe '#update_board' do
     move = proc { { 1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => 'X', 6 => '6', 7 => '7', 8 => '8', 9 => 'X' } }
-    it 'it is updated board' do
+    it 'returns true when is not the same board as original ' do
       original_board = subject.board
       subject.update_board(move)
-      expect(subject.board).to_not contain_exactly(original_board)
+      expect(subject.board).not_to contain_exactly(original_board)
+    end
+  end
+
+  describe '#display_board' do
+    it ' should not returns a nil class if the board is populated' do
+      expect(subject.display).not_to be_a NilClass
     end
   end
 end
