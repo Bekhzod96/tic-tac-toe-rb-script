@@ -50,4 +50,10 @@ RSpec.describe Game do
 end
 
 RSpec.describe Player do
+  let(:player) { Player.new('P1') }
+  describe '#init_player' do
+    it 'return a value different to nil' do
+      expect(player).not_to be_a NilClass
+    end
+  end
 end
