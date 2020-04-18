@@ -1,18 +1,17 @@
 require './lib/game_logic.rb'
-describe Game do
-  subject { Game.new('PL1', 'PL2', 'O') }
+require './lib/player.rb'
 
-  context '!draw?' do
-    it 'draw need to return true' do
+RSpec.describe Game do
+  let(:subject) { Game.new('PL1', 'PL2', 'O') }
+
+  describe '#draw?' do
+    it 'returns true if the game it\'s a draw' do
       subject.board = { 1 => 'X', 2 => '2', 3 => 'X', 4 => 'X', 5 => 'X', 6 => 'X', 7 => 'X', 8 => 'X', 9 => 'X' }
       expect(subject.draw?).to be_truthy
     end
-  end
-
-  context 'draw?' do
-    it 'draw need to return false' do
+    it 'returns false if the game it\'s not a draw' do
       subject.board = { 1 => 'X', 2 => 'X', 3 => 'X', 4 => 'X', 5 => 'X', 6 => 'X', 7 => 'X', 8 => 'X', 9 => 'X' }
-      should_not subject.draw?
+      expect(subject.draw?).to be_falsey
     end
   end
 
@@ -45,4 +44,7 @@ describe Game do
       expect(subject.board).to_not contain_exactly(original_board)
     end
   end
+end
+
+RSpec.describe Player do
 end
