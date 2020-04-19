@@ -44,6 +44,27 @@ RULES FOR TIC-TAC-TOE
 ![image](https://user-images.githubusercontent.com/24902525/79488667-b6d3f480-7fdf-11ea-9d52-09b6233b1f62.png)
 
 
+## Testing
+
+> We are using [RSpec testing tool](https://rspec.info/) to test all enumerable methods. Also some detailed [documentation](https://relishapp.com/rspec/docs) about this tool
+
+### Install
+- In a terminal window type `gem install rspec`
+- Once rspec install has finished, type `rspec --init`
+- You will see a folder `spec` and a file `.rspec`
+- Inside `spec` folder you'll see a `spec_helper.rb` file.
+
+### Run
+> We have already created a file called `main_spec.rb`, if you want to create another one with the end *`[your file name]`*`_spec.rb`
+- Open `./spec/main_spec.rb` file
+- Open a terminal window and type `rspec`
+- If all test were passed you will see: 
+
+![image](https://user-images.githubusercontent.com/24902525/79693179-c8f7a200-822e-11ea-9cb9-1518cc8c1fd7.png)
+
+Else you'll see a red message, then check errors and fix them 
+
+
 ## Authors
 
 👤 **Bertil Tandayamo**
